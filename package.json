@@ -1,0 +1,26 @@
+{
+  "name": "grouper-oracle",
+  "version": "1.0.0",
+  "description": "An app that allows users to generate a team roster for work, consisting of a manager, interns, and/or engineers.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MalikSpruill/grouper-oracle.git"
+  },
+  "author": "Malik Spruill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MalikSpruill/grouper-oracle/issues"
+  },
+  "homepage": "https://github.com/MalikSpruill/grouper-oracle#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "jest": "^27.5.1"
+  }
+}
