@@ -30,3 +30,5 @@ let renameFile = cssContent => {
         })
     })
 }
+
+module.exports = {writeFile, renameFile};
