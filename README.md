@@ -4,7 +4,8 @@
 
   ## Description
   An application that allows users to specify team-members and basic info through the command-line, generating an HTML page to showcase a team-roster.
-
+  
+https://user-images.githubusercontent.com/83142065/165025643-ecf21f05-3303-4084-a624-3c13cb898cf0.mp4
   
   ## Table of Contents
   * [Installation](#installation)
