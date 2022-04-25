@@ -1,5 +1,9 @@
 const inquirer = require("inquirer");
-const {writeFile, renameFile} = require("./src/generateFiles");
+const generateHtml = require("./src/generateHtml");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const writeFile = require("./src/generateFiles");
 
 let managerQuestions = [
     {
@@ -16,7 +20,7 @@ let managerQuestions = [
     },
     {
         type: "input",
-        name: "manangerId",
+        name: "managerId",
         message: "Enter the Manager's ID (Required)",
         validate: questionInput => {
             if (questionInput) {
@@ -164,27 +168,49 @@ let internQuestions = [
 ]
 
 const makeTeam = async () => {
+    let interns = [];
+    let engineers = [];
     let chooseEmployees = true;
     let managerInfo = await inquirer.prompt(managerQuestions);
     const {...manager} = managerInfo;
+    let registeredManager = new Manager(manager.managerName, manager.managerId, manager.managerEmail, manager.managerOfficeNumber);
     manager.employees = manager.employees ?? [];
+    console.log(registeredManager.getRole());
 
     while (chooseEmployees === true) {
         let {employeeType} = await inquirer.prompt(employeeTypeQuestion);
 
         if (employeeType === "intern") {
             let employee = await inquirer.prompt(internQuestions);
-            manager.employees.push(employee);
+            let registeredEmployee = new Intern(employee.internName, employee.internId, employee.internEmail, employee.school);
+            interns.push(registeredEmployee);
+            console.log(interns);
         }
         else if (employeeType === "engineer") {
             let employee = await inquirer.prompt(engineerQuestions);
-            manager.employees.push(employee);
+            let registeredEmployee = new Engineer(employee.engineerName, employee.engineerId, employee.engineerEmail, employee.github);
+            engineers.push(registeredEmployee);
+            console.log(engineers);
         }
         else {
             chooseEmployees = false;
         }
     }
-    console.log(manager.employees);
+    manager.employees.forEach(employee => {
+        console.table(employee); 
+    }) 
+
+    return {
+        registeredManager,
+        interns,
+        engineers
+    }
 }
 
-makeTeam();
+const initApp = () => {
+    makeTeam()
+    .then(teamData => generateHtml(teamData))
+    .then(data => writeFile(data)); 
+}
+
+initApp();

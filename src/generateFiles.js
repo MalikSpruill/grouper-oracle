@@ -15,7 +15,8 @@ let writeFile = htmlContent => {
     })
 }
 
-
+//This is an optional function if you'd rather rewrite the css file into the (dist) sub-directory 
+/*
 let renameFile = cssContent => {
     return new Promise((resolve, reject) => {
         fs.rename("./style.css", "./dist/style.css", err => {
@@ -30,5 +31,6 @@ let renameFile = cssContent => {
         })
     })
 }
+*/
 
-module.exports = {writeFile, renameFile};
+module.exports = writeFile
