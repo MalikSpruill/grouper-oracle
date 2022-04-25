@@ -5,6 +5,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const writeFile = require("./src/generateFiles");
 
+// creates a manager class
 let managerQuestions = [
     {
         type: "input",
@@ -56,6 +57,7 @@ let managerQuestions = [
     },
 ]
 
+// allows users to create intern and engineer team-members
 let employeeTypeQuestion = [
     {
         type: "list",
@@ -65,6 +67,7 @@ let employeeTypeQuestion = [
     }
 ]
 
+// creates an engineer class
 let engineerQuestions = [
     {
         type: "input",
@@ -116,6 +119,7 @@ let engineerQuestions = [
     },
 ]
 
+// creates an intern class
 let internQuestions = [
         {
             type: "input",
@@ -167,6 +171,7 @@ let internQuestions = [
         },
 ]
 
+// converts prompt logic into employee classes
 const makeTeam = async () => {
     let interns = [];
     let engineers = [];
@@ -194,7 +199,7 @@ const makeTeam = async () => {
             chooseEmployees = false;
         }
     }
-    
+
     return {
         registeredManager,
         interns,

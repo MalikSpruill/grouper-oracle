@@ -1,3 +1,4 @@
+// creates html cards for the employee classes
 const createTeamCards = (registeredManager, engineers, interns) => {
     return `
         <article class="card">
@@ -65,6 +66,7 @@ const createTeamCards = (registeredManager, engineers, interns) => {
     `
 }
 
+// generates the html that will be sent to the (dist) sub-directory
 const generateHtml = data => {
     const {registeredManager, interns, engineers} = data;
     return `
