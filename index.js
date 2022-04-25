@@ -174,8 +174,6 @@ const makeTeam = async () => {
     let managerInfo = await inquirer.prompt(managerQuestions);
     const {...manager} = managerInfo;
     let registeredManager = new Manager(manager.managerName, manager.managerId, manager.managerEmail, manager.managerOfficeNumber);
-    manager.employees = manager.employees ?? [];
-    console.log(registeredManager.getRole());
 
     while (chooseEmployees === true) {
         let {employeeType} = await inquirer.prompt(employeeTypeQuestion);
@@ -196,10 +194,7 @@ const makeTeam = async () => {
             chooseEmployees = false;
         }
     }
-    manager.employees.forEach(employee => {
-        console.table(employee); 
-    }) 
-
+    
     return {
         registeredManager,
         interns,
